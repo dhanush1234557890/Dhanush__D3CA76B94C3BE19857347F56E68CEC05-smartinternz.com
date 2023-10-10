@@ -1,28 +1,40 @@
-# 1.1 implement a recursive function to calculate the factorial of a given number.
-"""
-1!=1x1
-2!=2x1---->>2x1
-3!=3x2---->>3x2x1
-.
-.
-.
-.
-.
-.
-10!=10x9!--->>10x9x8x...x1
+'''
+Important a function called sort_students that takes a list of student objects as input and sports the
+list based on their CGPA (Cumulative Grade Point Average) in descending order. Each student object 
+has the following attributes: name (string), roll_number (string), and cgpa (float). Test the function 
+with different input lists of students.
+'''
 
-formula - n x (n-1)!
-"""
+class Student:
+
+  def __init__(self, name, roll_number, cgpa):
+    self.name = name
+    self.roll_number = roll_number
+    self.cgpa = cgpa
 
 
-def fact_rec(n):
-  if n == 0 or n == 1:
-    return 1
-  else:
-    return n * fact_rec(n - 1)
+def sort_students(student_list):
+  # sort the list of students in descending order of CGPA
+  sorted_students = sorted(student_list,
+                          key=lambda student: student.cgpa,
+                           reverse=True)
+  # Syntax - lambda arg:exp
+  return sorted_students
 
 
-number = int(input("Enter a value:"))
-res = fact_rec(number)
+# Example usage:
+students = [
+  Student("Abilesh","A001", 7.6), 
+  Student("vasan","A008", 7.7),
+  Student("jai","A014", 7.8),
+  Student("dhanush","A124", 7.9),
+]
 
-print("The Factorial of {} is {}.".format(number, res))
+sorted_students = sort_students(students)
+
+# Print the sorted list of students
+for student in sorted_students:
+  print("Name: {}, Roll Number: {}, CGPA: {}".format(student.name,
+                                                     student.roll_number,
+                                                     student.cgpa))
+  
